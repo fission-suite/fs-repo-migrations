@@ -8,6 +8,51 @@ github.com/AndreasBriese/bbloom
 github.com/Stebalien/go-bitfield
 # github.com/alexbrainman/goissue34681 v0.0.0-20191006012335-3fc7a47baff5
 github.com/alexbrainman/goissue34681
+# github.com/aws/aws-sdk-go v1.35.30
+github.com/aws/aws-sdk-go/aws
+github.com/aws/aws-sdk-go/aws/arn
+github.com/aws/aws-sdk-go/aws/awserr
+github.com/aws/aws-sdk-go/aws/awsutil
+github.com/aws/aws-sdk-go/aws/client
+github.com/aws/aws-sdk-go/aws/client/metadata
+github.com/aws/aws-sdk-go/aws/corehandlers
+github.com/aws/aws-sdk-go/aws/credentials
+github.com/aws/aws-sdk-go/aws/credentials/ec2rolecreds
+github.com/aws/aws-sdk-go/aws/credentials/endpointcreds
+github.com/aws/aws-sdk-go/aws/credentials/processcreds
+github.com/aws/aws-sdk-go/aws/credentials/stscreds
+github.com/aws/aws-sdk-go/aws/csm
+github.com/aws/aws-sdk-go/aws/defaults
+github.com/aws/aws-sdk-go/aws/ec2metadata
+github.com/aws/aws-sdk-go/aws/endpoints
+github.com/aws/aws-sdk-go/aws/request
+github.com/aws/aws-sdk-go/aws/session
+github.com/aws/aws-sdk-go/aws/signer/v4
+github.com/aws/aws-sdk-go/internal/context
+github.com/aws/aws-sdk-go/internal/ini
+github.com/aws/aws-sdk-go/internal/s3shared
+github.com/aws/aws-sdk-go/internal/s3shared/arn
+github.com/aws/aws-sdk-go/internal/s3shared/s3err
+github.com/aws/aws-sdk-go/internal/sdkio
+github.com/aws/aws-sdk-go/internal/sdkmath
+github.com/aws/aws-sdk-go/internal/sdkrand
+github.com/aws/aws-sdk-go/internal/sdkuri
+github.com/aws/aws-sdk-go/internal/shareddefaults
+github.com/aws/aws-sdk-go/internal/strings
+github.com/aws/aws-sdk-go/internal/sync/singleflight
+github.com/aws/aws-sdk-go/private/checksum
+github.com/aws/aws-sdk-go/private/protocol
+github.com/aws/aws-sdk-go/private/protocol/eventstream
+github.com/aws/aws-sdk-go/private/protocol/eventstream/eventstreamapi
+github.com/aws/aws-sdk-go/private/protocol/json/jsonutil
+github.com/aws/aws-sdk-go/private/protocol/query
+github.com/aws/aws-sdk-go/private/protocol/query/queryutil
+github.com/aws/aws-sdk-go/private/protocol/rest
+github.com/aws/aws-sdk-go/private/protocol/restxml
+github.com/aws/aws-sdk-go/private/protocol/xml/xmlutil
+github.com/aws/aws-sdk-go/service/s3
+github.com/aws/aws-sdk-go/service/sts
+github.com/aws/aws-sdk-go/service/sts/stsiface
 # github.com/benbjohnson/clock v1.0.3
 github.com/benbjohnson/clock
 # github.com/bren2010/proquint v0.0.0-20160323162903-38337c27106d
@@ -20,8 +65,6 @@ github.com/cenkalti/backoff
 github.com/cespare/xxhash
 # github.com/cheekybits/genny v1.0.0
 github.com/cheekybits/genny/generic
-# github.com/coreos/go-semver v0.3.0
-github.com/coreos/go-semver/semver
 # github.com/crackcomm/go-gitignore v0.0.0-20170627025303-887ab5e44cc3
 github.com/crackcomm/go-gitignore
 # github.com/cskr/pubsub v1.0.2
@@ -79,9 +122,10 @@ github.com/huin/goupnp/soap
 github.com/huin/goupnp/ssdp
 # github.com/ipfs/bbloom v0.0.4
 github.com/ipfs/bbloom
-# github.com/ipfs/fs-repo-migrations/tools v0.0.0-20210323144402-297a63449538
+# github.com/ipfs/fs-repo-migrations/tools v0.0.0-20210412175027-280b5e796651
 ## explicit
 github.com/ipfs/fs-repo-migrations/tools/go-migrate
+github.com/ipfs/fs-repo-migrations/tools/mfsr
 # github.com/ipfs/go-bitswap v0.3.3
 github.com/ipfs/go-bitswap
 github.com/ipfs/go-bitswap/decision
@@ -126,6 +170,10 @@ github.com/ipfs/go-ds-flatfs
 github.com/ipfs/go-ds-leveldb
 # github.com/ipfs/go-ds-measure v0.1.0
 github.com/ipfs/go-ds-measure
+# github.com/ipfs/go-ds-s3 v0.7.0
+## explicit
+github.com/ipfs/go-ds-s3
+github.com/ipfs/go-ds-s3/plugin
 # github.com/ipfs/go-filestore v0.0.3
 ## explicit
 github.com/ipfs/go-filestore
@@ -163,7 +211,7 @@ github.com/ipfs/go-graphsync/responsemanager/responseassembler
 github.com/ipfs/go-graphsync/responsemanager/runtraversal
 github.com/ipfs/go-graphsync/selectorvalidator
 github.com/ipfs/go-graphsync/storeutil
-# github.com/ipfs/go-ipfs v0.7.1-0.20210323141657-684b8b5bb7b0
+# github.com/ipfs/go-ipfs v0.8.0
 ## explicit
 github.com/ipfs/go-ipfs
 github.com/ipfs/go-ipfs/blocks/blockstoreutil
@@ -309,6 +357,8 @@ github.com/jbenet/go-temp-err-catcher
 github.com/jbenet/goprocess
 github.com/jbenet/goprocess/context
 github.com/jbenet/goprocess/periodic
+# github.com/jmespath/go-jmespath v0.4.0
+github.com/jmespath/go-jmespath
 # github.com/koron/go-ssdp v0.0.0-20191105050749-2e1c40ed0b5d
 github.com/koron/go-ssdp
 # github.com/libp2p/go-addr-util v0.0.2
@@ -585,7 +635,7 @@ go.uber.org/zap/internal/exit
 go.uber.org/zap/zapcore
 # go4.org v0.0.0-20200411211856-f5505b9728dd
 go4.org/lock
-# golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a
+# golang.org/x/crypto v0.0.0-20201221181555-eec23a3978ad
 golang.org/x/crypto/blake2b
 golang.org/x/crypto/blake2s
 golang.org/x/crypto/chacha20
@@ -613,7 +663,7 @@ golang.org/x/net/ipv4
 golang.org/x/net/ipv6
 golang.org/x/net/route
 golang.org/x/net/trace
-# golang.org/x/sys v0.0.0-20200930185726-fdedc70b468f
+# golang.org/x/sys v0.0.0-20210124154548-22da62e12c0c
 golang.org/x/sys/cpu
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix

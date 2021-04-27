@@ -8,20 +8,21 @@ import (
 	"os"
 	"path"
 
+	mfsr "github.com/ipfs/fs-repo-migrations/tools/mfsr"
 	"github.com/ipfs/go-blockservice"
 	"github.com/ipfs/go-datastore"
 	"github.com/ipfs/go-filestore"
-	"github.com/ipfs/go-ipfs-blockstore"
-	"github.com/ipfs/go-ipfs-exchange-offline"
+	blockstore "github.com/ipfs/go-ipfs-blockstore"
+	offline "github.com/ipfs/go-ipfs-exchange-offline"
 	"github.com/ipfs/go-ipfs-pinner/pinconv"
 	"github.com/ipfs/go-ipfs/plugin/loader"
 	"github.com/ipfs/go-ipfs/repo"
 	"github.com/ipfs/go-ipfs/repo/fsrepo"
-	"github.com/ipfs/go-ipfs/repo/fsrepo/migrations"
-	"github.com/ipfs/go-ipld-format"
+	format "github.com/ipfs/go-ipld-format"
 	"github.com/ipfs/go-merkledag"
 
 	migrate "github.com/ipfs/fs-repo-migrations/tools/go-migrate"
+	s3 "github.com/ipfs/go-ds-s3/plugin"
 )
 
 type Migration struct{}
@@ -43,19 +44,20 @@ func (m Migration) Reversible() bool {
 
 func (m Migration) Apply(opts migrate.Options) error {
 	const (
-		fromVer = 10
-		toVer   = 11
+		fromVer = "10"
+		toVer   = "11"
 	)
 	verbose = opts.Verbose
 	log.Printf("applying %s repo migration", m.Versions())
 
-	ver, err := migrations.RepoVersion(opts.Path)
+	repo := mfsr.RepoPath(opts.Path)
+	ver, err := repo.Version()
 	if err != nil {
 		return err
 	}
 
 	if ver != fromVer {
-		return fmt.Errorf("versions differ (expected: %d, actual: %d)", fromVer, ver)
+		return fmt.Errorf("versions differ (expected: %s, actual: %s)", fromVer, ver)
 	}
 
 	if err = setupPlugins(opts.Path); err != nil {
@@ -86,7 +88,7 @@ func (m Migration) Apply(opts migrate.Options) error {
 		return fmt.Errorf("failed to transfer pins: %v", err)
 	}
 
-	err = migrations.WriteRepoVersion(opts.Path, toVer)
+	err = repo.WriteVersion(toVer)
 	if err != nil {
 		return fmt.Errorf("failed to update version file to %s: %v", toVer, err)
 	}
@@ -125,9 +127,10 @@ func (m Migration) Revert(opts migrate.Options) error {
 		return err
 	}
 
-	err = migrations.WriteRepoVersion(opts.Path, 10)
+	repo := mfsr.RepoPath(opts.Path)
+	err = repo.WriteVersion("10")
 	if err != nil {
-		return fmt.Errorf("failed to update version file to 10: %v", err)
+		return fmt.Errorf("failed to update version file to 11: %v", err)
 	}
 
 	log.Print("updated version file")
@@ -160,6 +163,12 @@ func setupPlugins(externalPluginsPath string) error {
 
 	// Load preloaded and external plugins
 	if err := plugins.Initialize(); err != nil {
+		return fmt.Errorf("error initializing plugins: %s", err)
+	}
+
+	s3plugin := s3.Plugins[0]
+	// Build s3 plugin into migration tool
+	if err := plugins.Load(s3plugin); err != nil {
 		return fmt.Errorf("error initializing plugins: %s", err)
 	}
 

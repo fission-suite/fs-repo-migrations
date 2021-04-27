@@ -6,7 +6,6 @@ require (
 	github.com/blang/semver v3.5.1+incompatible
 	github.com/bren2010/proquint v0.0.0-20160323162903-38337c27106d
 	github.com/cheggaaa/pb v1.0.29
-	github.com/coreos/go-semver v0.3.0
 	github.com/coreos/go-systemd/v22 v22.1.0
 	github.com/dustin/go-humanize v1.0.0
 	github.com/elgris/jsondiff v0.0.0-20160530203242-765b5c24c302
@@ -106,10 +105,10 @@ require (
 	go.opencensus.io v0.22.5
 	go.uber.org/fx v1.13.1
 	go.uber.org/zap v1.16.0
-	golang.org/x/crypto v0.0.0-20200820211705-5c72a883971a
+	golang.org/x/crypto v0.0.0-20201221181555-eec23a3978ad
 	golang.org/x/lint v0.0.0-20200302205851-738671d3881b // indirect
-	golang.org/x/sync v0.0.0-20201020160332-67f06af15bc9
-	golang.org/x/sys v0.0.0-20200930185726-fdedc70b468f
+	golang.org/x/sync v0.0.0-20201207232520-09787c993a3a
+	golang.org/x/sys v0.0.0-20210124154548-22da62e12c0c
 )
 
 go 1.14
