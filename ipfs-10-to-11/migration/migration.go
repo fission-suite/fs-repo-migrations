@@ -139,15 +139,15 @@ func setupPlugins(externalPluginsPath string) error {
 		return fmt.Errorf("error loading plugins: %s", err)
 	}
 
-	// Load preloaded and external plugins
-	if err := plugins.Initialize(); err != nil {
-		return fmt.Errorf("error initializing plugins: %s", err)
-	}
-
 	// Build s3 plugin into migration tool
 	s3plugin := s3.Plugins[0]
 	if err := plugins.Load(s3plugin); err != nil {
 		return fmt.Errorf("error loading s3 plugin: %s", err)
+	}
+
+	// Load preloaded and external plugins
+	if err := plugins.Initialize(); err != nil {
+		return fmt.Errorf("error initializing plugins: %s", err)
 	}
 
 	if err := plugins.Inject(); err != nil {
