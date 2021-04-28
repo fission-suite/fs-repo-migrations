@@ -21,6 +21,9 @@ cmd: fs-repo-migrations/fs-repo-migrations
 fs-repo-migrations/fs-repo-migrations:
 	cd fs-repo-migrations && go build
 
+install: 
+	go install -mod=vendor
+
 sharness:
 	make -C sharness
 
